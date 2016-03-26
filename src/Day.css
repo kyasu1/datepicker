@@ -1,0 +1,42 @@
+.day {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: none;
+}
+
+.day[data-selected]:hover {
+  color: #fff;
+  background: #3276b1;
+  border-color: #285e8e;
+}
+
+.day:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
+.day:focus {
+  background: #eee;
+  cursor: pointer;
+}
+
+.today {
+  color: #000;
+  background: #f5f5f5;
+}
+
+.selected {
+  color: #fff;
+  background: #3276b1;
+  border-color: #285e8e;
+}
+
+.sunday {
+  color: #cc0000;
+}
+
+.saturday {
+  color: #0000cc;
+}

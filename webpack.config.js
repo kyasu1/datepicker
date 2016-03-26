@@ -1,19 +1,20 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    './src/index'
+    'webpack-hot-middleware/client',
+    './src/index.tsx'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    filename: 'js/bundle.js',
+    publicPath: '/'
   },
   plugins: [
+    new ExtractTextPlugin('css/style.css', { allChunks: true }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
@@ -23,8 +24,20 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.tsx?$/,
-      loaders: ['react-hot', 'ts-loader'],
+      loaders: ['babel-loader', 'ts-loader'],
       include: path.join(__dirname, 'src')
+    },
+    {
+      test: /\.jsx?$/,
+      loaders: ['babel-loader'],
+      include: path.join(__dirname, 'src')
+    },
+    {
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract(
+        'style',
+        'css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]!postcss'
+      )
     }]
   }
 };

@@ -1,0 +1,13 @@
+{
+  "name": "datepicker",
+  "version": false,
+  "dependencies": {
+    "moment": "registry:npm/moment#2.10.5+20160211003958"
+  },
+  "ambientDependencies": {
+    "classnames": "registry:dt/classnames#0.0.0+20150923160543",
+    "react": "registry:dt/react#0.14.0+20160302224448",
+    "react-dom": "registry:dt/react-dom#0.14.0+20151118193745",
+    "require": "registry:dt/require#2.1.20+20160215162030"
+  }
+}
